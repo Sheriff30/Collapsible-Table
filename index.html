@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collapsible Table</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+      .collapsible-row {
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        padding: 0;
+        transition:
+          max-height 0.3s ease-out,
+          opacity 0.3s ease-out,
+          padding 0.3s ease-out;
+      }
+
+      .show-row {
+        max-height: 100px;
+        visibility: visible;
+        opacity: 1;
+        display: grid;
+      }
+
+      tr {
+        display: grid;
+        grid-template-columns: 50px 1fr 1fr 1fr 1fr;
+      }
+
+      tr td img {
+        width: 24px;
+        height: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="main-row" onclick="toggleRow(1)">
+          <td>
+            <img src="/arrow-down-circle-outline.svg" alt="arrow down icon" />
+          </td>
+          <td>1</td>
+          <td>Ahmed</td>
+          <td>30</td>
+          <td>Cairo</td>
+        </tr>
+        <tr class="collapsible-row" id="row-1">
+          <td></td>
+          <td>More info</td>
+          <td>More info</td>
+          <td>More info</td>
+          <td>More info</td>
+        </tr>
+
+        <tr class="main-row" onclick="toggleRow(2)">
+          <td>
+            <img src="/arrow-down-circle-outline.svg" alt="arrow down icon" />
+          </td>
+          <td>2</td>
+          <td>Mohamed</td>
+          <td>25</td>
+          <td>Cairo</td>
+        </tr>
+        <tr class="collapsible-row" id="row-2">
+          <td></td>
+          <td>More info</td>
+          <td>More info</td>
+          <td>More info</td>
+          <td>More info</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      function toggleRow(rowId) {
+        const row = document.getElementById("row-" + rowId);
+        row.classList.toggle("show-row");
+      }
+    </script>
+  </body>
+</html>
